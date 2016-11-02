@@ -1,0 +1,33 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Summary of Results
+{% endblock %}
+
+{% block content %}
+
+    <p>Participants:  {{ selfname }} and  {{ othername }}</p>
+
+    <table class="table" style="margin-top:20px;">
+        <tr>
+            <th>Round</th>
+            <th>Your payoff</th>
+            <th>Other's payoff</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.subsession.round_number }}</td>
+                <td>{{ p.payoff }}</td>
+                <td>{{ p.others }}</td>
+                {% endfor %}
+
+            </tr>
+
+        <p>Your total payoff is {{ total_payoff }}</p>
+
+    </table>
+
+
+{% endblock %}
+
